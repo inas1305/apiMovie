@@ -1,11 +1,17 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
+from rest_framework import routers
+from .serializer import GenreViewSet, FilmViewSet, ComedienViewSet, DescriptionViewSet
 
 from . import views
 
+router = routers.DefaultRouter()
+router.register(r'v1/genre', GenreViewSet)
+router.register(r'v1/film', FilmViewSet)
+router.register(r'v1/description', DescriptionViewSet)
+router.register(r'v1/comedien', ComedienViewSet)
+
 urlpatterns = [
 
-    # Genres routes
-    url(r'^genre$', views.genre, name='genre'),
-    url(r'^genre/(?P<id>\d+)$', views.genre, name='genre_id'),
+    url(r'^', include(router.urls)),
 
 ]

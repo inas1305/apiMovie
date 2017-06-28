@@ -39,7 +39,7 @@ def genre(request, id=None):
         # désérialisations
         genre_serializer = genreSerializer(data=data)
 
-        # Si on a une monument valide, on l'enregistre
+        # Si on a un genre valide, on l'enregistre
         if genre_serializer.is_valid():
             genre_serializer.save()
 
